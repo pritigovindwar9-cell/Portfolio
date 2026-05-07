@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Priti Ramesh Govindwar | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --violet:       #7c3aed;
+      --violet-light: #a78bfa;
+      --violet-dim:   rgba(124,58,237,0.15);
+      --rose:         #f43f5e;
+      --rose-dim:     rgba(244,63,94,0.15);
+      --bg:           #06040f;
+      --bg2:          #0c0820;
+      --bg3:          #130f28;
+      --card:         #100d22;
+      --border:       rgba(124,58,237,0.2);
+      --text:         #ede9ff;
+      --muted:        #8b7fb8;
+      --grad:         linear-gradient(135deg, #7c3aed, #f43f5e);
+      --grad-r:       linear-gradient(135deg, #f43f5e, #7c3aed);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      pointer-events: none;
+    }
+
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(6,4,15,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 700; letter-spacing: 0.04em;
+      background: var(--grad); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--violet-light); }
+
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger span { width: 24px; height: 1.5px; background: var(--text); transition: 0.3s; }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 2rem 2rem;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .orb1 { width: 520px; height: 520px; background: rgba(124,58,237,0.14); top: -120px; right: -100px; }
+    .orb2 { width: 400px; height: 400px; background: rgba(244,63,94,0.08); bottom: -100px; left: -80px; }
+    .orb3 { width: 250px; height: 250px; background: rgba(124,58,237,0.06); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 700px; width: 100%;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 1.25rem;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 30px; height: 1px; background: var(--rose);
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      font-weight: 700; line-height: 1.05;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-name .first { color: var(--text); }
+    .hero-name .last {
+      background: var(--grad); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-role {
+      font-size: 1rem; color: var(--muted); margin-bottom: 1rem;
+      font-weight: 300; letter-spacing: 0.02em;
+    }
+
+    .hero-tagline {
+      font-size: 0.88rem; color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary {
+      padding: 0.72rem 1.8rem; border-radius: 6px;
+      background: var(--grad); color: #fff;
+      font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: opacity 0.3s, transform 0.2s;
+      font-family: 'Nunito', sans-serif;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .btn-outline {
+      padding: 0.72rem 1.8rem; border-radius: 6px;
+      border: 1px solid var(--violet); color: var(--violet-light);
+      font-weight: 600; font-size: 0.88rem; letter-spacing: 0.04em;
+      text-decoration: none; background: transparent;
+      transition: background 0.3s, transform 0.2s;
+      font-family: 'Nunito', sans-serif;
+    }
+    .btn-outline:hover { background: var(--violet-dim); transform: translateY(-2px); }
+
+    /* ── SECTION COMMONS ── */
+    .section-wrap { padding: 5.5rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 0.6rem;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .section-eyebrow::before, .section-eyebrow::after {
+      content: ''; display: block; width: 24px; height: 1px; background: var(--rose);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 700; line-height: 1.1;
+    }
+    .section-title em { font-style: italic; color: var(--violet-light); }
+    .section-sub { color: var(--muted); font-size: 0.9rem; margin-top: 0.6rem; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      gap: 3.5rem; align-items: center;
+    }
+
+    .about-visual { position: relative; }
+
+    .about-avatar {
+      aspect-ratio: 1/1; max-width: 300px; width: 100%;
+      border-radius: 20px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5.5rem;
+      position: relative; overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .about-avatar::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(124,58,237,0.2), transparent 65%);
+    }
+
+    .about-accent-line {
+      position: absolute; bottom: -16px; left: 50%;
+      transform: translateX(-50%);
+      width: 60%; height: 3px;
+      background: var(--grad); border-radius: 99px;
+    }
+
+    .about-text p { color: var(--muted); margin-bottom: 1.1rem; line-height: 1.85; font-size: 0.95rem; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+
+    .info-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.75rem; }
+    .chip {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 7px 14px; border-radius: 99px;
+      font-size: 0.8rem; color: var(--muted);
+      transition: border-color 0.25s;
+    }
+    .chip:hover { border-color: var(--violet); }
+    .chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--violet); flex-shrink: 0; }
+
+    /* ── SKILLS ── */
+    .skills-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .skill-category {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+      transition: border-color 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .skill-category::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .skill-category:hover { border-color: var(--violet); }
+    .skill-category:hover::before { opacity: 1; background: var(--grad); }
+
+    .skill-category-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 1.1rem;
+    }
+    .skill-cat-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--violet-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .skill-cat-name { font-weight: 700; font-size: 0.95rem; }
+    .skill-cat-sub { font-size: 0.75rem; color: var(--muted); }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .skill-tag {
+      font-size: 0.76rem; padding: 4px 12px; border-radius: 99px;
+      background: rgba(124,58,237,0.08); color: var(--violet-light);
+      border: 1px solid rgba(124,58,237,0.2);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .skill-tag:hover { background: rgba(124,58,237,0.18); border-color: var(--violet); }
+    .skill-tag.strong {
+      background: rgba(244,63,94,0.1); color: var(--rose);
+      border-color: rgba(244,63,94,0.25);
+    }
+    .skill-tag.strong:hover { background: rgba(244,63,94,0.2); }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 1.75rem;
+      transition: transform 0.25s, border-color 0.25s;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--grad); opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card:hover { transform: translateY(-5px); border-color: var(--violet); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--violet-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; margin-bottom: 1.1rem;
+    }
+
+    .project-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+    .project-desc { font-size: 0.86rem; color: var(--muted); line-height: 1.75; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+    .tag {
+      font-size: 0.7rem; padding: 3px 10px; border-radius: 99px;
+      background: rgba(124,58,237,0.1); color: var(--violet-light);
+      border: 1px solid rgba(124,58,237,0.22);
+    }
+
+    /* ── EDUCATION ── */
+    .timeline { position: relative; padding-left: 2.25rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px;
+      width: 1px; background: var(--border);
+    }
+
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-dot {
+      position: absolute; left: -2.25rem;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--grad); top: 2px;
+      box-shadow: 0 0 16px rgba(124,58,237,0.5);
+    }
+
+    .timeline-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    .timeline-card:hover { border-color: var(--violet); }
+
+    .timeline-year {
+      font-size: 0.72rem; color: var(--rose); font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.35rem;
+    }
+    .timeline-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .timeline-school { font-size: 0.88rem; color: var(--muted); }
+    .timeline-detail { font-size: 0.82rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.6; }
+
+    /* ── DOCUMENTS ── */
+    .docs-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .doc-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+    .doc-card:hover { transform: translateY(-4px); border-color: var(--rose); }
+
+    .doc-preview {
+      height: 160px;
+      background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-preview img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    .doc-badge {
+      position: absolute; top: 10px; right: 10px;
+      background: rgba(244,63,94,0.18);
+      border: 1px solid rgba(244,63,94,0.35);
+      color: var(--rose); font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 99px;
+    }
+
+    .doc-info { padding: 1.1rem 1.25rem; }
+    .doc-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .doc-sub { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(6,4,15,0.94); backdrop-filter: blur(10px);
+      align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-inner {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; max-width: 700px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      padding: 2rem; position: relative;
+    }
+    .lightbox-close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--bg3); border: 1px solid var(--border);
+      color: var(--text); font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: var(--violet-dim); }
+    .lightbox-img { width: 100%; border-radius: 10px; margin-top: 1rem; }
+    .lightbox-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .lightbox-sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.25rem; }
+
+    .marks-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-top: 1rem; }
+    .marks-table th { background: var(--bg3); color: var(--muted); font-weight: 700; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .marks-table td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .marks-table tr:last-child td { border-bottom: none; }
+    .grade-badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 0.7rem; font-weight: 700; background: rgba(124,58,237,0.15); color: var(--violet-light); border: 1px solid rgba(124,58,237,0.25); }
+
+    .cert-placeholder {
+      background: var(--bg3); border: 1px dashed var(--border);
+      border-radius: 10px; padding: 2rem; text-align: center;
+      margin-top: 1rem;
+    }
+    .cert-placeholder p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; }
+    .cert-placeholder strong { color: var(--violet-light); }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 1.1rem;
+    }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--violet-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-icon svg { width: 17px; height: 17px; stroke: var(--violet-light); fill: none; stroke-width: 2; }
+    .contact-item a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .contact-item a:hover { color: var(--violet-light); }
+
+    .form-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .form-group input, .form-group textarea {
+      width: 100%; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 0.68rem 1rem; color: var(--text); font-size: 0.88rem;
+      font-family: inherit; transition: border-color 0.3s; outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--violet); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    footer {
+      text-align: center; padding: 2.25rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.82rem;
+    }
+    footer strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      background: var(--grad); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* cert image embed */
+    .cert-img-wrapper { margin-top: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    .cert-img-wrapper img { width: 100%; display: block; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--bg2); padding: 1rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .hero-content { text-align: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">PRG.</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#documents">Documents</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="home" style="max-width:100%;padding:0;">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Portfolio 2025–26</div>
+      <h1 class="hero-name">
+        <span class="first">Priti Ramesh</span><br/>
+        <span class="last">Govindwar</span>
+      </h1>
+      <p class="hero-role">Aspiring CSE Engineer &amp; Web Developer · MITAOE, Pune</p>
+      <p class="hero-tagline">
+        Building with curiosity — from logic to design, from code to creativity.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Who I Am</div>
+      <h2 class="section-title">About <em>Me</em></h2>
+      <p class="section-sub">A little bit about my story</p>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-visual">
+        <div class="about-avatar">👩‍💻</div>
+        <div class="about-accent-line"></div>
+      </div>
+      <div class="about-text">
+        <p>
+          I'm <strong>Priti Ramesh Govindwar</strong>, a First Year B.Tech student in <strong>Computer Science &amp; Engineering</strong> at MIT Academy of Engineering (MITAOE), Pune — where I'm building on a strong academic foundation to pursue my passion for technology.
+        </p>
+        <p>
+          My curiosity started with understanding how the web works, leading me to explore <strong>HTML, CSS, JavaScript</strong>, and Python. I've completed Cisco Python Essentials 1 &amp; 2 courses through MITAOE and I love diving deep into problem-solving and logic.
+        </p>
+        <p>
+          Beyond the screen, I'm a practitioner of <strong>Classical dance</strong> — which teaches me discipline and precision — and I genuinely enjoy <strong>intensive mathematics</strong>. I believe the same analytical mindset that makes a great dancer or mathematician makes a great engineer.
+        </p>
+        <div class="info-chips">
+          <div class="chip"><div class="chip-dot"></div> Maharashtra, India</div>
+          <div class="chip"><div class="chip-dot"></div> FY B.Tech – CSE, MITAOE</div>
+          <div class="chip"><div class="chip-dot"></div> Web Development</div>
+          <div class="chip"><div class="chip-dot"></div> Classical Dance</div>
+          <div class="chip"><div class="chip-dot"></div> Mathematics Enthusiast</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <div id="skills" style="background:var(--bg2);">
+    <div style="padding: 5.5rem 2rem;">
+      <div class="section-header">
+        <div class="section-eyebrow">What I Know</div>
+        <h2 class="section-title">My <em>Skills</em></h2>
+        <p class="section-sub">Technologies and areas I'm learning and working with</p>
+      </div>
+      <div class="skills-categories reveal">
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-cat-icon">🌐</div>
+            <div>
+              <div class="skill-cat-name">Web Development</div>
+              <div class="skill-cat-sub">Frontend basics</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Responsive Design</span>
+            <span class="skill-tag">DOM Manipulation</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-cat-icon">🐍</div>
+            <div>
+              <div class="skill-cat-name">Python</div>
+              <div class="skill-cat-sub">Logic &amp; scripting</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag strong">Cisco Certified</span>
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">Functions &amp; Modules</span>
+            <span class="skill-tag">File Handling</span>
+            <span class="skill-tag">Problem Solving</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-cat-icon">⚙️</div>
+            <div>
+              <div class="skill-cat-name">Programming</div>
+              <div class="skill-cat-sub">Core languages</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">C Programming</span>
+            <span class="skill-tag">PHP (Basics)</span>
+            <span class="skill-tag">Algorithms</span>
+            <span class="skill-tag">Logic Building</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-cat-icon">🗄️</div>
+            <div>
+              <div class="skill-cat-name">Databases</div>
+              <div class="skill-cat-sub">Data management</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Oracle SQL</span>
+            <span class="skill-tag">Basic Queries</span>
+            <span class="skill-tag">CRUD Operations</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-cat-icon">📐</div>
+            <div>
+              <div class="skill-cat-name">Mathematics</div>
+              <div class="skill-cat-sub">Strong foundation</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag strong">Mathematics Enthusiast</span>
+            <span class="skill-tag">Calculus</span>
+            <span class="skill-tag">Discrete Maths</span>
+            <span class="skill-tag">Linear Algebra</span>
+            <span class="skill-tag">Analytical Thinking</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-cat-icon">🧠</div>
+            <div>
+              <div class="skill-cat-name">Soft Skills</div>
+              <div class="skill-cat-sub">Beyond the code</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Attention to Detail</span>
+            <span class="skill-tag">Discipline</span>
+            <span class="skill-tag">Team Collaboration</span>
+            <span class="skill-tag">Continuous Learning</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects" class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">What I've Built</div>
+      <h2 class="section-title">My <em>Projects</em></h2>
+      <p class="section-sub">Things I've built and explored</p>
+    </div>
+    <div class="projects-grid reveal">
+
+      <div class="project-card">
+        <div class="project-icon">🌿</div>
+        <div class="project-title">Smart Environmental Management &amp; Gas Detection System</div>
+        <div class="project-desc">
+          A Design Thinking project focused on real-time monitoring of environmental parameters and hazardous gas levels. The system aims to alert users in industrial or urban settings to dangerous conditions, promoting safety and sustainability.
+        </div>
+        <div class="project-tags">
+          <span class="tag">Design Thinking</span>
+          <span class="tag">IoT Concept</span>
+          <span class="tag">Environment</span>
+          <span class="tag">Safety</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🧮</div>
+        <div class="project-title">Interactive Web Calculator</div>
+        <div class="project-desc">
+          A clean, fully functional calculator built with HTML, CSS, and JavaScript. Supports basic arithmetic operations with a responsive button layout, keyboard support, and smooth UI interactions — a great first step into frontend development.
+        </div>
+        <div class="project-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Frontend</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🐍</div>
+        <div class="project-title">Python Logic Building Suite</div>
+        <div class="project-desc">
+          A curated collection of Python programs — including number guessing games, pattern printing with loops, string manipulation challenges, and OOP exercises. Reflects the depth of Python learning through structured coursework.
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">OOP</span>
+          <span class="tag">Logic Building</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education" style="background:var(--bg2);max-width:100%;padding:0;">
+    <div style="max-width:1100px;margin:0 auto;padding:5.5rem 2rem;">
+      <div class="section-header">
+        <div class="section-eyebrow">Academic Journey</div>
+        <h2 class="section-title">My <em>Education</em></h2>
+        <p class="section-sub">The path that brought me here</p>
+      </div>
+      <div class="timeline reveal">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2025 – Present</div>
+            <div class="timeline-title">B.Tech in Computer Science &amp; Engineering</div>
+            <div class="timeline-school">MIT Academy of Engineering (MITAOE), Pune</div>
+            <div class="timeline-detail">First Year · Affiliated to Savitribai Phule Pune University (SPPU) · Alandi, Pune, Maharashtra</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">Completed 2025</div>
+            <div class="timeline-title">HSC – 12th Standard</div>
+            <div class="timeline-school">Pandit Jawaharlal Uccha Mahavidyalaya, Togri</div>
+            <div class="timeline-detail">Maharashtra Board · Science Stream</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">Completed 2023</div>
+            <div class="timeline-title">SSC – 10th Standard</div>
+            <div class="timeline-school">Vidhya Vardhini High School, Udgir</div>
+            <div class="timeline-detail">Maharashtra Board · Secondary School Examination</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DOCUMENTS & CERTIFICATES ── -->
+  <section id="documents" class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Verified Achievements</div>
+      <h2 class="section-title">Documents &amp; <em>Certificates</em></h2>
+      <p class="section-sub">Click any card to view details</p>
+    </div>
+    <div class="docs-grid reveal">
+
+      <div class="doc-card" onclick="openDoc('cgpa')">
+        <div class="doc-preview" style="background:linear-gradient(135deg,#0d0b22,#1a1040);">
+          <span>🎓</span>
+          <div class="doc-badge">SPPU</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-title">Semester I Result</div>
+          <div class="doc-sub">B.Tech CSE · MITAOE, Pune</div>
+        </div>
+      </div>
+
+      <div class="doc-card" onclick="openDoc('py1')">
+        <div class="doc-preview" style="background:linear-gradient(135deg,#0d0b22,#1a1235);">
+          <span>🐍</span>
+          <div class="doc-badge">Cisco</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-title">Python Essentials 1</div>
+          <div class="doc-sub">Cisco Networking Academy · Apr 2026</div>
+        </div>
+      </div>
+
+      <div class="doc-card" onclick="openDoc('py2')">
+        <div class="doc-preview" style="background:linear-gradient(135deg,#0d0b22,#1a1235);">
+          <span>🐍</span>
+          <div class="doc-badge">Cisco</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-title">Python Essentials 2</div>
+          <div class="doc-sub">Cisco Networking Academy · Apr 2026</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <div id="contact" style="background:var(--bg2);">
+    <div style="max-width:1100px;margin:0 auto;padding:5.5rem 2rem;">
+      <div class="section-header">
+        <div class="section-eyebrow">Say Hello</div>
+        <h2 class="section-title">Get In <em>Touch</em></h2>
+        <p class="section-sub">Feel free to reach out — I'd love to connect!</p>
+      </div>
+      <div class="contact-grid reveal">
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:0.75rem;">Let's Connect</h3>
+          <p style="color:var(--muted);margin-bottom:2rem;line-height:1.8;font-size:0.9rem;">I'm always open to learning opportunities, collaborations, internships, or just a friendly conversation about tech, maths, or dance. Drop me a message!</p>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <a href="mailto:pritigovindwar@gmail.com">pritigovindwar@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <a href="#">Pune, Maharashtra, India</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <a href="https://linkedin.com" target="_blank">LinkedIn Profile</a>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Enter your name" />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" placeholder="How can I help?" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Write your message here..."></textarea>
+          </div>
+          <button class="btn-primary" style="width:100%;" onclick="handleFormSubmit(this)">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Designed &amp; built with ❤️ by <strong>Priti Ramesh Govindwar</strong> · 2025–26</p>
+    <p style="margin-top:0.3rem;font-size:0.75rem;">B.Tech CSE · MITAOE, Pune</p>
+  </footer>
+
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+    <div class="lightbox-inner" id="lightboxInner">
+      <div class="lightbox-close" onclick="closeLightbox()">✕</div>
+      <div id="lightboxContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function handleFormSubmit(btn) {
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = 'linear-gradient(135deg,#7c3aed,#5b21b6)';
+      setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 3000);
+    }
+
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id], div[id]');
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--violet-light)' : '';
+      });
+    });
+
+    // Python Essentials 1 certificate image (base64 embedded)
+    const py1ImgSrc = "/mnt/user-data/uploads/1777188887370_image.png";
+    const py2ImgSrc = "/mnt/user-data/uploads/1777188914072_image.png";
+
+    const docs = {
+      cgpa: {
+        title: 'Semester I Result',
+        sub: 'B.Tech Computer Science & Engineering · MITAOE, Pune',
+        content: `
+          <div style="text-align:center;padding:1.5rem 0;">
+            <div style="font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;background:linear-gradient(135deg,#7c3aed,#f43f5e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">—</div>
+            <div style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem;">SGPA &amp; CGPA · Semester I</div>
+          </div>
+          <table class="marks-table">
+            <thead><tr><th>Detail</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Institution</td><td><strong>MIT Academy of Engineering (MITAOE)</strong></td></tr>
+              <tr><td>Branch</td><td><strong style="color:var(--violet-light)">Computer Science &amp; Engineering</strong></td></tr>
+              <tr><td>Scheme</td><td>B.Tech CSE – NEP 2023–24</td></tr>
+            </tbody>
+          </table>
+          <div class="cert-placeholder"><p>📎 Upload a screenshot of your result portal to display it here.<br/><strong>Share the image file in this chat</strong> and it will be embedded into the portfolio.</p></div>
+        `
+      },
+      py1: {
+        title: 'Python Essentials 1',
+        sub: 'Cisco Networking Academy · Completed 15 Apr 2026',
+        content: `
+          <div style="background:var(--bg3);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border);">
+            <p style="color:var(--muted);font-size:0.88rem;line-height:1.8;">
+              Awarded to <strong style="color:var(--text)">Priti Govindwar</strong> for successfully completing
+              <strong style="color:var(--violet-light)">Python Essentials 1</strong> through MIT Academy of Engineering, alandi Pune
+              via the Cisco Networking Academy program.
+            </p>
+          </div>
+          <table class="marks-table">
+            <thead><tr><th>Detail</th><th>Info</th></tr></thead>
+            <tbody>
+              <tr><td>Instructor</td><td>Anuradha Pawar</td></tr>
+              <tr><td>Institution</td><td>MIT Academy of Engineering, alandi Pune</td></tr>
+              <tr><td>Completion Date</td><td><strong style="color:var(--rose)">15 Apr 2026</strong></td></tr>
+              <tr><td>Cert ID</td><td style="font-size:0.75rem;color:var(--muted);">14e2ff85-a648-47e1-9f24-2095acba05e7</td></tr>
+            </tbody>
+          </table>
+          <div class="cert-img-wrapper">
+            <img src="1777188887370_image.png" alt="Python Essentials 1 Certificate" onerror="this.parentElement.innerHTML='<div class=\\'cert-placeholder\\'><p>📎 Certificate image not found. Place the certificate image in the same folder as this HTML file.</p></div>'" />
+          </div>
+        `
+      },
+      py2: {
+        title: 'Python Essentials 2',
+        sub: 'Cisco Networking Academy · Completed 15 Apr 2026',
+        content: `
+          <div style="background:var(--bg3);border-radius:12px;padding:1.5rem;margin-bottom:1rem;border:1px solid var(--border);">
+            <p style="color:var(--muted);font-size:0.88rem;line-height:1.8;">
+              Awarded to <strong style="color:var(--text)">Priti Govindwar</strong> for successfully completing
+              <strong style="color:var(--violet-light)">Python Essentials 2</strong> through MIT Academy of Engineering, alandi Pune
+              via the Cisco Networking Academy program.
+            </p>
+          </div>
+          <table class="marks-table">
+            <thead><tr><th>Detail</th><th>Info</th></tr></thead>
+            <tbody>
+              <tr><td>Instructor</td><td>Anuradha Pawar</td></tr>
+              <tr><td>Institution</td><td>MIT Academy of Engineering, alandi Pune</td></tr>
+              <tr><td>Completion Date</td><td><strong style="color:var(--rose)">15 Apr 2026</strong></td></tr>
+              <tr><td>Cert ID</td><td style="font-size:0.75rem;color:var(--muted);">32f443e3-2735-48e1-a25c-f1f58ccedcf3</td></tr>
+            </tbody>
+          </table>
+          <div class="cert-img-wrapper">
+            <img src="1777188914072_image.png" alt="Python Essentials 2 Certificate" onerror="this.parentElement.innerHTML='<div class=\\'cert-placeholder\\'><p>📎 Certificate image not found. Place the certificate image in the same folder as this HTML file.</p></div>'" />
+          </div>
+        `
+      }
+    };
+
+    function openDoc(key) {
+      const d = docs[key];
+      document.getElementById('lightboxContent').innerHTML = `
+        <div class="lightbox-title">${d.title}</div>
+        <div class="lightbox-sub">${d.sub}</div>
+        ${d.content}
+      `;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeLightboxOutside(e) {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+</body>
+</html>
